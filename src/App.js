@@ -15,10 +15,8 @@ function App() {
 
   useEffect(()=>{
     const hash = getTokenFromUrl();
-
-  
-   
-    const _token = hash.access_token;
+     const _token = hash.access_token;
+     window.location.hash = "";
    
     if(_token) {
      dispatch({
@@ -28,15 +26,22 @@ function App() {
       spotify.setAccessToken(_token);
       spotify.getMe()
       .then(user=>{
-      
+      console.log("😄",user);
         dispatch({
           type: "SET_USER",
           user: user
         })
+      });
+      spotify.getUserPlaylists().then(playLists=>{
+        console.log("🍔",playLists);
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playLists: playLists
+        })
       })
     }
    
-    window.location.hash = "";
+   
   },[]);
 
   

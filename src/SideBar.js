@@ -4,8 +4,11 @@ import SideBarOption from './SideBarOption';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import { useStateValue } from './StateProvider';
 
 const SideBar = () => {
+    const [{playLists}] = useStateValue();
+    console.log(playLists);
     return (
         <div className="sidebar">
                 <img className="sidebr__logo" src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
@@ -16,6 +19,9 @@ const SideBar = () => {
          <br />
          <strong className="sidebar__title">PlayList</strong>
          <hr />
+         {playLists?.items?.map(playList=>(
+             <SideBarOption key={playList.id} title={playList.name} />
+         ))}
         </div>
     );
 };
