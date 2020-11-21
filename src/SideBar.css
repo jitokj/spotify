@@ -8,3 +8,10 @@
   padding-right: 10px;
   background-color: #040404;
 }
+
+.sidebr__logo {
+  height: 70px;
+  padding: 10px;
+  margin-right: auto;
+  object-fit: contain;
+}
