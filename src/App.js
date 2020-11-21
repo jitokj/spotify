@@ -10,7 +10,7 @@ const spotify = new SpotifyWebApi();
 
 function App() {
 
-  //const [token,setToken] = useState(null);
+  
   const [{user,token},dispatch] = useStateValue();
 
   useEffect(()=>{
@@ -40,6 +40,7 @@ function App() {
   },[]);
 
   console.log("👦",user);
+  console.log("👽",token);
   return (
     <div className="app">
 
