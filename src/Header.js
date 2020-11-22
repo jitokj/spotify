@@ -2,8 +2,10 @@ import React from 'react';
 import "./Header.css";
 import SearchIcon from '@material-ui/icons/Search';
 import {Avatar} from "@material-ui/core"
+import { useStateValue } from './StateProvider';
 
 const Header = ({spotify}) => {
+    const [{user}] =useStateValue()
     return (
         <div className="header">
             <div className="header__left">
@@ -11,8 +13,8 @@ const Header = ({spotify}) => {
                 <input placeholder="Search for Artist,Songs or Podcasts" type="text" />
             </div>
             <div className="header__right">
-            <Avatar src="" alt="jito" />
-                <h4>Jito</h4>
+            <Avatar src={user?.images[0]?.url} alt={user?.display_name} />
+                <h4>{user?.display_name}</h4>
             </div>
         </div>
     );
